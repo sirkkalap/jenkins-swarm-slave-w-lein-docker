@@ -1,8 +1,12 @@
 # Base image
-FROM dockerfile/java
+FROM csanchez/jenkins-swarm-slave
+
+MAINTAINER Petri Sirkkala <sirpete@iki.fi>
+
+USER root
 
 # Time zone
-RUN echo "Europe/Oslo" > /etc/timezone \
+RUN echo "Europe/Helsinki" > /etc/timezone \
  && dpkg-reconfigure --frontend=noninteractive tzdata
 
 # Leiningen
@@ -11,3 +15,5 @@ RUN curl -L -s https://raw.githubusercontent.com/technomancy/leiningen/stable/bi
     /usr/local/bin/lein \
  && chmod 0755 /usr/local/bin/lein \
  && lein upgrade
+
+USER jenkins-slave
