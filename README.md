@@ -15,6 +15,6 @@ docker build -t sirkkalap/jenkins-swarm-slave-w-lein .
 
 ```bash
 docker run --rm --link jenkins-master:jenkins \
-sirkkalap/jenkins-swarm-slave-w-nodejs:latest -username \
+sirkkalap/jenkins-swarm-slave-w-lein:latest -username \
 jenkins -password jenkins -executors 1
 ```
